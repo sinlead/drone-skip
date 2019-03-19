@@ -12,5 +12,5 @@ if [ "$LOCAL_SHA" = "$REMOTE_SHA" ]; then
   exit 0
 else
   echo "Not latest commit. Fail this build by drone-skip."
-  exit -1
+  exit 1
 fi
