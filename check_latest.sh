@@ -6,7 +6,7 @@ echo "password ${CI_NETRC_PASSWORD}" >> "${HOME}/.netrc"
 
 BRANCH_NAME=$DRONE_SOURCE_BRANCH
 LOCAL_SHA=$DRONE_COMMIT_SHA
-REMOTE_SHA=$(git ls-remote origin | grep "refs/heads/$BRANCH_NAME" | awk '{print $1}')
+REMOTE_SHA=$(git ls-remote origin | grep "refs/heads/$BRANCH_NAME$" | awk '{print $1}')
 
 if [ "$LOCAL_SHA" = "$REMOTE_SHA" ]; then 
   exit 0
