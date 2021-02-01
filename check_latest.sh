@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-echo "machine ${CI_NETRC_MACHINE}" > "${HOME}/.netrc"
-echo "login ${CI_NETRC_USERNAME}" >> "${HOME}/.netrc"
-echo "password ${CI_NETRC_PASSWORD}" >> "${HOME}/.netrc"
+echo "machine ${DRONE_NETRC_MACHINE}" > "${HOME}/.netrc"
+echo "login ${DRONE_NETRC_USERNAME}" >> "${HOME}/.netrc"
+echo "password ${DRONE_NETRC_PASSWORD}" >> "${HOME}/.netrc"
 
 echo "Initialize temporary repository"
 mkdir -p /tmp/drone-skip/
@@ -20,7 +20,7 @@ echo "Remote temporary repositiory"
 rm -rf /tmp/drone-skip/
 
 echo "Check whether commit SHA of this build is latest SHA"
-if [ "${DRONE_COMMIT_SHA}" = "${ORIGIN_SHA}" ]; then 
+if [ "${DRONE_COMMIT_SHA}" = "${ORIGIN_SHA}" ]; then
   echo "It's latest build. Contiune..."
   exit 0
 else
